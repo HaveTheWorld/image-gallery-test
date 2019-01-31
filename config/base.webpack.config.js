@@ -6,6 +6,15 @@ const DirectoryNamedWebpackPlugin = require('directory-named-webpack-plugin')
 const resolve = path.resolve.bind(this, __dirname, '..')
 const componentsPath = resolve('src/components')
 
+const sassResourcesLoader = {
+	loader: 'sass-resources-loader',
+	options: {
+		resources: [
+			resolve('src/assets/sass/variables.sass')
+		]
+	}
+}
+
 module.exports = ({ dev }) => ({
 	entry: {
 		main: resolve('src/index.js')
@@ -48,7 +57,8 @@ module.exports = ({ dev }) => ({
 							sourceMap: true
 						}
 					},
-					'sass-loader'
+					'sass-loader',
+					sassResourcesLoader
 				]
 			},
 			// sass modules
@@ -66,7 +76,8 @@ module.exports = ({ dev }) => ({
 							localIdentName: dev ? '[local]__[hash:base64:5]' : '[hash:base64]'
 						}
 					},
-					'sass-loader'
+					'sass-loader',
+					sassResourcesLoader
 				]
 			}
 		]
