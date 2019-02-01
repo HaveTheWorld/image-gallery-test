@@ -1,0 +1,12 @@
+.row
+	display: flex
+	&:not(:last-child)
+		margin-bottom: $freeSpace
+		padding-bottom: $freeSpace
+		border-bottom: 1px solid rgba($black, 0.25)
+	&.is-dragging
+		opacity: 0
+
+@media screen and (max-width: 500px)
+	.row
+		flex-wrap: wrap

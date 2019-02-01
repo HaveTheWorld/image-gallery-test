@@ -1,0 +1,26 @@
+.comment
+	margin-left: $freeSpace
+	margin-right: $freeSpace
+	flex-grow: 1
+
+.comment-text
+	line-height: 1.3
+	font-size: 14px
+
+div.buttons
+	flex-wrap: nowrap
+	align-self: flex-start
+
+@media screen and (max-width: 500px)
+	.comment
+		order: 1
+		margin-left: 0
+		margin-right: 0
+		margin-top: $freeSpace
+	div.buttons
+		flex-grow: 1
+		flex-direction: column
+		align-items: flex-end
+		justify-content: flex-end
+		button:not(:last-child)
+			margin-right: 0 !important

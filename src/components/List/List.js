@@ -1,7 +1,10 @@
 import React from 'react'
 import T from 'prop-types'
+import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { removeImage, viewImage } from '@/redux/ducks/images'
+import { sortImages } from '@/redux/ducks/images'
+import { DragDropContext } from 'react-dnd'
+import HTML5Backend from 'react-dnd-html5-backend'
 import ListItem from './ListItem'
 
 class List extends React.Component {
@@ -15,15 +18,16 @@ class List extends React.Component {
 
 	render() {
 		const { isMounted } = this.state
-		const { items, removeImage, viewImage } = this.props
+		const { items, sortImages } = this.props
+		
 		return (
 			<ul>
-				{items.map(item => (
+				{items.map((item, index) => (
 					<ListItem
 						key={item.id}
+						index={index}
 						{...item}
-						remove={removeImage}
-						view={viewImage}
+						sort={sortImages}
 						listMounted={isMounted}
 					/>
 				))}
@@ -41,8 +45,10 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = {
-	removeImage,
-	viewImage
+	sortImages
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(List)
+export default compose(
+	DragDropContext(HTML5Backend),
+	connect(mapStateToProps, mapDispatchToProps)
+)(List)
