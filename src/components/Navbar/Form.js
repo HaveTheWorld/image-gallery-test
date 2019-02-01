@@ -5,12 +5,10 @@ import { addImage } from '@/redux/ducks/images'
 import { Input, Icon } from '@/components/elements'
 import css from './Form.sass'
 
-let randomInt, faker
-
 const isDev = process.env.NODE_ENV !== 'production'
 
-randomInt = isDev ? require('@/lib/helpers').randomInt : undefined
-faker = isDev ? require('faker/locale/en') : undefined
+const randomInt = isDev ? require('@/lib/helpers').randomInt : undefined
+const faker = isDev ? require('faker/locale/en') : undefined
 
 class Form extends React.Component {
 	constructor(props) {
@@ -36,7 +34,7 @@ class Form extends React.Component {
 		e.preventDefault()
 
 		const { url, comment } = this.state
-		if (!url || !comment) return
+		if (!url || !comment) { return }
 
 		const { addImage, close } = this.props
 		addImage({ url, comment })
@@ -58,6 +56,7 @@ class Form extends React.Component {
 				/>
 				<Input
 					el="textarea"
+					rows="5"
 					label="Image Comment"
 					icon={['far', 'comment-alt']}
 					value={comment}

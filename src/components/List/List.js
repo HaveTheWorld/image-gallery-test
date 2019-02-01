@@ -4,18 +4,31 @@ import { connect } from 'react-redux'
 import { removeImage } from '@/redux/ducks/images'
 import ListItem from './ListItem'
 
-const List = ({ images, removeImage }) => {
-	return (
-		<ul>
-			{images.map(image => (
-				<ListItem
-					key={image.id}
-					{...image}
-					remove={removeImage}
-				/>
-			))}
-		</ul>
-	)
+class List extends React.Component {
+	state = {
+		isMounted: false
+	}
+
+	componentDidMount() {
+		this.setState({ isMounted: true })
+	}
+
+	render() {
+		const { isMounted } = this.state
+		const { items, removeImage } = this.props
+		return (
+			<ul>
+				{items.map(item => (
+					<ListItem
+						key={item.id}
+						{...item}
+						remove={removeImage}
+						listMounted={isMounted}
+					/>
+				))}
+			</ul>
+		)
+	}
 }
 
 List.propTypes = {
@@ -23,7 +36,7 @@ List.propTypes = {
 }
 
 const mapStateToProps = state => ({
-	images: state.images.items
+	items: state.images.items
 })
 
 const mapDispatchToProps = {

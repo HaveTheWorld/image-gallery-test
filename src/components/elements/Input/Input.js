@@ -3,7 +3,7 @@ import T from 'prop-types'
 import cls from 'classnames'
 import { Icon } from '@/components/elements'
 
-const Input = ({ el, rows, type, label, icon, autoFocus, value, onChange }) => {
+const Input = ({ el, rows, type, label, icon, autoFocus, value, onChange, addClass }) => {
 	const Element = el || 'input'
 
 	return (
@@ -12,7 +12,7 @@ const Input = ({ el, rows, type, label, icon, autoFocus, value, onChange }) => {
 				<Element
 					rows={Element === 'textarea' ? (rows || 3) : null}
 					type={Element === 'input' ? (type || 'text') : null}
-					className={Element}
+					className={cls(Element, addClass)}
 					placeholder={label}
 					autoFocus={autoFocus}
 					value={value}

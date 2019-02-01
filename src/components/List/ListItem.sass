@@ -9,15 +9,25 @@
 	flex-shrink: 0
 	width: 100px
 	height: 75px
+	display: flex
+	align-items: center
+	justify-content: center
 	border: 1px solid $primary
 	background-size: cover
 	background-position: 0 center
 	background-repeat: no-repeat
 
+.loader
+	height: 32px !important
+	width: 32px !important
+	border-color:  transparent $primary $primary $primary !important
+
 .comment
 	margin-left: $freeSpace
 	margin-right: $freeSpace
 	flex-grow: 1
+
+.comment-text
 	line-height: 1.3
 	font-size: 14px
 
