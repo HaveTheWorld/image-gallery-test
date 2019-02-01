@@ -1,6 +1,4 @@
 import React from 'react'
-import T from 'prop-types'
-import cls from 'classnames'
 import onClickOutside from 'react-onclickoutside'
 import { Icon } from '@/components/elements'
 import Form from './Form'
@@ -42,10 +40,6 @@ class Dropdown extends React.Component {
 			</div>
 		)
 	}
-}
-
-Dropdown.propTypes = {
-	
 }
 
 export default onClickOutside(Dropdown)

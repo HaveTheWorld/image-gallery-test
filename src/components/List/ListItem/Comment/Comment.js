@@ -57,7 +57,9 @@ class Comment extends React.Component {
 }
 
 Comment.propTypes = {
-	
+	id: T.string.isRequired,
+	comment: T.string.isRequired,
+	removeImage: T.func.isRequired
 }
 
 const mapDispatchToProps = {

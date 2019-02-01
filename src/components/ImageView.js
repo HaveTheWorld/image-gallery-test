@@ -15,7 +15,11 @@ const ImageView = ({ image, closeImage }) => {
 }
 
 ImageView.propTypes = {
-	
+	image: T.shape({
+		id: T.string.isRequired,
+		url: T.string.isRequired
+	}),
+	closeImage: T.func.isRequired
 }
 
 const mapStateToProps = state => ({

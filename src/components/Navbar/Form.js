@@ -76,7 +76,8 @@ class Form extends React.Component {
 }
 
 Form.propTypes = {
-	
+	addImage: T.func.isRequired,
+	close: T.func.isRequired
 }
 
 const mapDispatchToProps = {

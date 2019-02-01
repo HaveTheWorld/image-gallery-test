@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import T from 'prop-types'
 import cls from 'classnames'
 
 const Loader = ({ addClass }) => {
@@ -9,7 +9,7 @@ const Loader = ({ addClass }) => {
 }
 
 Loader.propTypes = {
-	
+	addClass: T.string
 }
 
 export default Loader

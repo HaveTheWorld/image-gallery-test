@@ -2,7 +2,9 @@ import React from 'react'
 import T from 'prop-types'
 import { findDOMNode } from 'react-dom'
 import cls from 'classnames'
+import { compose } from 'redux'
 import { DragSource, DropTarget } from 'react-dnd'
+import { IMAGE } from '@/lib/dnd-types'
 import Preview from './Preview'
 import Comment from './Comment'
 import css from './ListItem.sass'
@@ -36,7 +38,13 @@ class ListItem extends React.Component {
 }
 
 ListItem.propTypes = {
-	
+	listMounted: T.bool.isRequired,
+	id: T.string.isRequired,
+	url: T.string.isRequired,
+	comment: T.string.isRequired,
+	isDragging: T.bool.isRequired,
+	connectDragSource: T.func.isRequired,
+	connectDropTarget: T.func.isRequired
 }
 
 /* ===== Source ===== */
@@ -90,9 +98,7 @@ const targetCollect = connect => ({
 	connectDropTarget: connect.dropTarget(),
 })
 
-export default
-	DropTarget('card', targetSpec, targetCollect)(
-		DragSource('card', sourceSpec, sourceCollect)(
-			ListItem
-		)
-	)
+export default compose(
+	DropTarget(IMAGE, targetSpec, targetCollect),
+	DragSource(IMAGE, sourceSpec, sourceCollect)
+)(ListItem)

@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react'
 import { hot } from 'react-hot-loader/root'
-import T from 'prop-types'
 import Navbar from './Navbar'
 import List from './List'
 import ImageView from './ImageView'
@@ -22,10 +21,6 @@ const App = () => {
 			<ImageView />
 		</Fragment>
 	)
-}
-
-App.propTypes = {
-	
 }
 
 export default hot(App)

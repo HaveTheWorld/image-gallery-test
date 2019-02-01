@@ -56,7 +56,10 @@ class EditComment extends React.Component {
 }
 
 EditComment.propTypes = {
-	
+	id: T.string.isRequired,
+	comment: T.string.isRequired,
+	editComment: T.func.isRequired,
+	close: T.func.isRequired
 }
 
 const mapDispatchToProps = {

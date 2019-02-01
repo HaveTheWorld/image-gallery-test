@@ -33,7 +33,10 @@ const Icon = ({ icon, isLeft, isRight, addClass, ...rest }) => {
 }
 
 Icon.propTypes = {
-	
+	icon: T.arrayOf(T.string).isRequired,
+	isLeft: T.bool,
+	isRight: T.bool,
+	addClass: T.string
 }
 
 export default Icon

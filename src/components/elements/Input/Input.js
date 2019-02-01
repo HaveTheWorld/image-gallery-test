@@ -25,7 +25,15 @@ const Input = ({ el, rows, type, label, icon, autoFocus, value, onChange, addCla
 }
 
 Input.propTypes = {
-	
+	el: T.string,
+	rows: T.oneOfType([T.string, T.number]),
+	type: T.string,
+	label: T.string.isRequired,
+	icon: T.arrayOf(T.string),
+	autoFocus: T.bool,
+	value: T.any.isRequired,
+	onChange: T.func.isRequired,
+	addClass: T.string
 }
 
 export default Input

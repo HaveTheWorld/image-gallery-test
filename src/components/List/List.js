@@ -37,7 +37,8 @@ class List extends React.Component {
 }
 
 List.propTypes = {
-	
+	items: T.array.isRequired,
+	sortImages: T.func.isRequired
 }
 
 const mapStateToProps = state => ({

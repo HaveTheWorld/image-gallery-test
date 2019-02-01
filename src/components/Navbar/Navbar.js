@@ -1,5 +1,4 @@
 import React from 'react'
-import T from 'prop-types'
 import Dropdown from './Dropdown'
 
 const Navbar = () => {
@@ -19,10 +18,6 @@ const Navbar = () => {
 			</div>
 		</nav>
 	)
-}
-
-Navbar.propTypes = {
-	
 }
 
 export default Navbar
