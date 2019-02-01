@@ -46,6 +46,7 @@ class EditComment extends React.Component {
 					className="button is-small is-light"
 					title="Save comment"
 					onClick={this.saveComment}
+					disabled={!comment}
 				>
 					<Icon icon={['fas', 'save']} />
 				</button>
