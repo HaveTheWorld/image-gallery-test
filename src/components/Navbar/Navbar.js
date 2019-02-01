@@ -1,5 +1,6 @@
 import React from 'react'
 import T from 'prop-types'
+import Dropdown from './Dropdown'
 
 const Navbar = () => {
 	return (
@@ -12,9 +13,7 @@ const Navbar = () => {
 			<div className="navbar-menu">
 				<div className="navbar-end">
 					<div className="navbar-item">
-						<button className="button is-primary">
-							Add Image
-						</button>
+						<Dropdown />
 					</div>
 				</div>
 			</div>
