@@ -27,39 +27,15 @@ export const getActiveImage = state => {
 export default (state = initialState, { type, payload }) => {
 	switch (type) {
 		case FILL_IMAGES:
-			return { ...state, items: payload }
-
-		case ADD_IMAGE: {
-			const id = uuid()
-			const items = [...state.items, { id, ...payload }]
-			localStorage.setItem('images', JSON.stringify(items))
-			return { ...state, items }
-		}
-
-		case REMOVE_IMAGE: {
-			const items = state.items.filter(({ id }) => id !== payload)
-			localStorage.setItem('images', JSON.stringify(items))
-			return { ...state, items }
-		}
-
-		case EDIT_COMMENT: {
-			const { id, comment } = payload
-			const items = state.items.map(item => {
-				if (item.id === id) { item.comment = comment }
-				return item
-			})
-			localStorage.setItem('images', JSON.stringify(items))
-			return { ...state, items }
-		}
-
-		case VIEW_IMAGE:
-			return { ...state, activeImageId: payload }
-
-		case CLOSE_IMAGE:
-			return { ...state, activeImageId: '' }
-
+		case ADD_IMAGE:
+		case REMOVE_IMAGE:
+		case EDIT_COMMENT:
 		case SORT_IMAGES:
 			return { ...state, items: payload }
+
+		case VIEW_IMAGE:
+		case CLOSE_IMAGE:
+			return { ...state, activeImageId: payload }
 
 		default:
 			return state
@@ -68,11 +44,38 @@ export default (state = initialState, { type, payload }) => {
 
 /* ===== Action creators ===== */
 export const fillImages = images => ({ type: FILL_IMAGES, payload: images })
-export const addImage = image => ({ type: ADD_IMAGE, payload: image })
-export const removeImage = imageId => ({ type: REMOVE_IMAGE, payload: imageId })
-export const editComment = (imageId, comment) => ({ type: EDIT_COMMENT, payload: { id: imageId, comment } })
-export const viewImage = imageId => ({ type: VIEW_IMAGE, payload: imageId })
-export const closeImage = () => ({ type: CLOSE_IMAGE })
+
+export const addImage = image => (dispatch, getState) => {
+	const { items } = getState()[moduleName]
+	const id = uuid()
+	const newItems = [...items, { id, ...image }]
+
+	localStorage.setItem('images', JSON.stringify(newItems))
+
+	dispatch({ type: ADD_IMAGE, payload: newItems })
+}
+
+export const removeImage = imageId => (dispatch, getState) => {
+	const { items } = getState()[moduleName]
+	const newItems = items.filter(({ id }) => id !== imageId)
+
+	localStorage.setItem('images', JSON.stringify(newItems))
+
+	dispatch({ type: REMOVE_IMAGE, payload: newItems })
+}
+
+export const editComment = (imageId, comment) => (dispatch, getState) => {
+	const { items } = getState()[moduleName]
+	const newItems = items.map(item => {
+		if (item.id === imageId) { item.comment = comment }
+		return item
+	})
+
+	localStorage.setItem('images', JSON.stringify(newItems))
+
+	dispatch({ type: EDIT_COMMENT, payload: newItems })
+}
+
 export const sortImages = (dragIndex, hoverIndex) => (dispatch, getState) => {
 	const { items } = getState()[moduleName]
 	const dragImage = items[dragIndex]
@@ -82,3 +85,7 @@ export const sortImages = (dragIndex, hoverIndex) => (dispatch, getState) => {
 	
 	dispatch({ type: SORT_IMAGES, payload: newItems })
 }
+
+export const viewImage = imageId => ({ type: VIEW_IMAGE, payload: imageId })
+
+export const closeImage = () => ({ type: CLOSE_IMAGE, payload: '' })
