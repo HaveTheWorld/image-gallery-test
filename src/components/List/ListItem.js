@@ -34,15 +34,19 @@ class ListItem extends React.Component {
 
 	render() {
 		const { imageLoaded, editMode } = this.state
-		const { id, url, comment, remove } = this.props
+		const { id, url, comment, remove, view } = this.props
 		const style = { backgroundImage: `url(${url})` }
 		
 		return (
 			<li className={css.row} ref={ref => this.item = ref}>
 
-				<div className={css.image} style={style}>
+				<a
+					className={css.image}
+					style={style}
+					onClick={() => imageLoaded && view(id)}
+				>
 					{!imageLoaded && <Loader addClass={css.loader} />}
-				</div>
+				</a>
 
 				<div className={css.comment}>
 					{

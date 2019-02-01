@@ -1,3 +1,5 @@
 export function randomInt(min, max) {
-	return Math.floor(Math.random() * (max - min + 1))
+	var rand = min + Math.random() * (max + 1 - min)
+	rand = Math.floor(rand)
+	return rand
 }

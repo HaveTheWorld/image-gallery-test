@@ -1,7 +1,7 @@
 import React from 'react'
 import T from 'prop-types'
 import { connect } from 'react-redux'
-import { removeImage } from '@/redux/ducks/images'
+import { removeImage, viewImage } from '@/redux/ducks/images'
 import ListItem from './ListItem'
 
 class List extends React.Component {
@@ -15,7 +15,7 @@ class List extends React.Component {
 
 	render() {
 		const { isMounted } = this.state
-		const { items, removeImage } = this.props
+		const { items, removeImage, viewImage } = this.props
 		return (
 			<ul>
 				{items.map(item => (
@@ -23,6 +23,7 @@ class List extends React.Component {
 						key={item.id}
 						{...item}
 						remove={removeImage}
+						view={viewImage}
 						listMounted={isMounted}
 					/>
 				))}
@@ -40,7 +41,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = {
-	removeImage
+	removeImage,
+	viewImage
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(List)
