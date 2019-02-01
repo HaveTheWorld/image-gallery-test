@@ -3,7 +3,7 @@ import T from 'prop-types'
 import cls from 'classnames'
 import { Icon } from '@/components/elements'
 
-const Input = ({ el, rows, type, label, icon, autoFocus }) => {
+const Input = ({ el, rows, type, label, icon, autoFocus, value, onChange }) => {
 	const Element = el || 'input'
 
 	return (
@@ -15,6 +15,8 @@ const Input = ({ el, rows, type, label, icon, autoFocus }) => {
 					className={Element}
 					placeholder={label}
 					autoFocus={autoFocus}
+					value={value}
+					onChange={onChange}
 				/>
 				{icon && <Icon icon={icon} isLeft fw />}
 			</div>

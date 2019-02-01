@@ -34,7 +34,7 @@ class Dropdown extends React.Component {
 					<div className="dropdown-menu">
 						<div className="dropdown-content">
 							<div className="dropdown-item">
-								<Form />
+								<Form close={this.toggle} />
 							</div>
 						</div>
 					</div>
