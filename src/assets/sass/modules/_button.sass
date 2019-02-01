@@ -1,0 +1,12 @@
+.button
+	&.is-block
+		width: 100%
+	&[disabled]
+		cursor: default
+	.icon
+		&:first-child:not(:last-child)
+			margin-right: 0.5em
+		&:last-child:not(:first-child)
+			margin-left: 0.5em
+	&.is-light:hover
+		background: #e8e8e8

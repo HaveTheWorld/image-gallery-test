@@ -1,0 +1,29 @@
+.navbar, .navbar-menu, .navbar-start, .navbar-end
+	display: flex
+	align-items: stretch
+
+.navbar
+	min-height: 3.25rem
+	border-radius: 0
+	border-bottom: 1px solid $primary
+	&-menu
+		flex-grow: 1
+		flex-shrink: 0
+		padding: 0
+		box-shadow: none
+	&-start
+		justify-content: flex-start
+		margin-right: auto
+	&-end
+		justify-content: flex-end
+		margin-left: auto
+
+.navbar-item
+	display: flex
+	align-items: center
+	& img
+		max-height: initial
+
+@media screen and (max-width: 400px)
+	.navbar-brand
+		display: none

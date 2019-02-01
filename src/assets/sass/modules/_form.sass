@@ -1,0 +1,16 @@
+.input, .textarea
+	&::placeholder
+		color: lighten($grey, 10%)
+		font-weight: 300
+
+.control.has-icons-left
+	.textarea
+		padding-left: 2.25em
+		& ~ .icon
+			top: 5px
+		&:focus
+			& ~ .icon
+				color: $grey
+
+.textarea
+	resize: none
